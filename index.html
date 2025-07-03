@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Emoji Display</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="comment-section">
+      <h1>Emoji Comment Board</h1>
+      <input id="filter-input" type="text" placeholder="🔍 Filter comments..." oninput="filterList()" />
+      <ul id="comment-list"></ul>
+      <div class="comment-controls">
+        <input id="comment-input" type="text" placeholder="💬 Add a comment..." />
+        <button onclick="addComment()">Add Comment</button>
+        <button onclick="highlightWinner()">Highlight Winner</button>
+      </div>
+    </section>
+
+    <section class="emoji-section">
+      <div id="emoji-container">🎉</div>
+      <div class="emoji-buttons">
+        <button onclick="showRandomEmoji()">Show Random Emoji</button>
+        <button onclick="reverseOrder()">Reverse Emoji</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const comments = [];
+
+    function showRandomEmoji() {
+      const emojis = ['😀', '😂', '🥳', '😎', '😍', '🤖', '🐱', '🌈', '🍕', '🚀'];
+      const randomIndex = Math.floor(Math.random() * emojis.length);
+      document.getElementById('emoji-container').innerText = emojis[randomIndex];
+    }
+
+    function reverseOrder() {
+      const container = document.getElementById('emoji-container');
+      container.innerText = container.innerText.split('').reverse().join('');
+    }
+
+    function addComment() {
+      const input = document.getElementById('comment-input');
+      const value = input.value.trim();
+      if (value) {
+        comments.push(value);
+        input.value = '';
+        renderComments(comments);
+      }
+    }
+
+    function renderComments(list) {
+      const ul = document.getElementById('comment-list');
+      ul.innerHTML = '';
+      list.forEach((comment, idx) => {
+        const li = document.createElement('li');
+        li.textContent = comment;
+        li.id = 'comment-' + idx;
+        ul.appendChild(li);
+      });
+    }
+
+    function filterList() {
+      const filter = document.getElementById('filter-input').value.toLowerCase();
+      const filtered = comments.filter(c => c.toLowerCase().includes(filter));
+      renderComments(filtered);
+    }
+
+    function highlightWinner() {
+      const ul = document.getElementById('comment-list');
+      if (ul.children.length === 0) return;
+      Array.from(ul.children).forEach(li => li.style.background = '');
+      ul.lastChild.style.background = 'yellow';
+    }
+  </script>
+</body>
+</html>
