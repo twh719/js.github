@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #005f99;
+}
+
+.comment-section,
+.emoji-section {
+  margin-bottom: 2rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.comment-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment-controls button {
+  padding: 0.6rem;
+  border: none;
+  background-color: #005f99;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.comment-controls button:hover {
+  background-color: #004b7f;
+}
+
+#comment-list {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 1rem;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+#comment-list li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ddd;
+}
+
+#emoji-container {
+  text-align: center;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.emoji-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.emoji-buttons button {
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  background-color: #0080ff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.emoji-buttons button:hover {
+  background-color: #005fcc;
+}
